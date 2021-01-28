@@ -1,0 +1,6 @@
+framework module Pods_sideMenuPractic {
+  umbrella header "Pods-sideMenuPractic-umbrella.h"
+
+  export *
+  module * { export * }
+}
