@@ -1,13 +1,23 @@
 //
-//  ArticleTableViewController.swift
+//  articleViewController.swift
 //  sideMenuPractic
 //
-//  Created by heawon on 2021/01/28.
+//  Created by heawon on 2021/01/30.
 //
 
 import UIKit
+import SideMenu
 
-class ArticleTableViewController: UITableViewController {
+class articleViewController: UIViewController {
+
+    @IBAction func btnClicked(_ sender: UIButton) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let sideMenuViewController: SideMenuViewController = storyboard.instantiateViewController(withIdentifier: "SideMenuViewController") as! SideMenuViewController
+        let menu = CustomSideMenuNavigation(rootViewController: sideMenuViewController)
+        present(menu, animated: true, completion: nil)
+    }
+    @IBOutlet weak var tableView: UITableView!
     var ArticleArray = [
     Article(title: "Lake Canada", articleImageName: "21.jpeg", authorName: "Jonh", authorImageName: "11.jpqg"),
         Article(title: "Lake New Zealand", articleImageName: "22.jpeg", authorName: "Hellen", authorImageName: "12.jpqg"),
@@ -16,18 +26,23 @@ class ArticleTableViewController: UITableViewController {
         Article(title: "Lake Canada", articleImageName: "21.jpeg", authorName: "Jonh", authorImageName: "11.jpqg"),
         Article(title: "Lake New Zealand", articleImageName: "22.jpeg", authorName: "Hellen", authorImageName: "12.jpqg")
     ]
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "eachContentCell")
-        //tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 0.1))
     }
+    
 
-    // MARK: - Table view data source
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+}
+
+
+extension articleViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ArticleArray.count
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eachContentCell", for: indexPath) as! CustomTableViewCell
         let data = ArticleArray[indexPath.row]
         //imageView.image = UIImage(named: 이름)
@@ -37,6 +52,4 @@ class ArticleTableViewController: UITableViewController {
         cell.authorName?.text = data.authorName
         return cell
     }
-
-
 }
