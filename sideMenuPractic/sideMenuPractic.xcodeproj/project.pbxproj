@@ -15,6 +15,8 @@
 		59380E5925C2C3C000011FD1 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59380E5825C2C3C000011FD1 /* Article.swift */; };
 		59380E6125C2C61800011FD1 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59380E5F25C2C61800011FD1 /* CustomTableViewCell.swift */; };
 		59380E6225C2C61800011FD1 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59380E6025C2C61800011FD1 /* CustomTableViewCell.xib */; };
+		5985DE8025C64559002EBDF4 /* ReusableCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5985DE7F25C64559002EBDF4 /* ReusableCustomView.swift */; };
+		5985DE8325C64586002EBDF4 /* ReusableCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5985DE8225C64586002EBDF4 /* ReusableCustomView.xib */; };
 		598F5F1525C4EDF50093C225 /* sideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598F5F1425C4EDF50093C225 /* sideMenu.swift */; };
 		598F5F1825C4EE350093C225 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598F5F1725C4EE350093C225 /* SideMenuViewController.swift */; };
 		598F5F1C25C4FAA00093C225 /* articleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598F5F1B25C4FAA00093C225 /* articleViewController.swift */; };
@@ -36,6 +38,8 @@
 		59380E5825C2C3C000011FD1 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		59380E5F25C2C61800011FD1 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		59380E6025C2C61800011FD1 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
+		5985DE7F25C64559002EBDF4 /* ReusableCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCustomView.swift; sourceTree = "<group>"; };
+		5985DE8225C64586002EBDF4 /* ReusableCustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReusableCustomView.xib; sourceTree = "<group>"; };
 		598F5F1425C4EDF50093C225 /* sideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sideMenu.swift; sourceTree = "<group>"; };
 		598F5F1725C4EE350093C225 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		598F5F1B25C4FAA00093C225 /* articleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = articleViewController.swift; sourceTree = "<group>"; };
@@ -101,11 +105,12 @@
 				59380E4625C2B77300011FD1 /* LaunchScreen.storyboard */,
 				59380E4925C2B77300011FD1 /* Info.plist */,
 				59D5F49525C5608E005348C9 /* Extension */,
-				598F5F1425C4EDF50093C225 /* sideMenu.swift */,
 				598F5F1225C4E7F60093C225 /* Controller */,
 				59D5F48C25C55ACE005348C9 /* Model */,
 				59380E5F25C2C61800011FD1 /* CustomTableViewCell.swift */,
 				59380E6025C2C61800011FD1 /* CustomTableViewCell.xib */,
+				5985DE7F25C64559002EBDF4 /* ReusableCustomView.swift */,
+				5985DE8225C64586002EBDF4 /* ReusableCustomView.xib */,
 			);
 			path = sideMenuPractic;
 			sourceTree = "<group>";
@@ -113,6 +118,7 @@
 		598F5F1225C4E7F60093C225 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				598F5F1425C4EDF50093C225 /* sideMenu.swift */,
 				598F5F1725C4EE350093C225 /* SideMenuViewController.swift */,
 				598F5F1B25C4FAA00093C225 /* articleViewController.swift */,
 				59D5F48F25C55C78005348C9 /* categoryTqoViewController.swift */,
@@ -199,6 +205,7 @@
 				59380E4525C2B77300011FD1 /* Assets.xcassets in Resources */,
 				59380E6225C2C61800011FD1 /* CustomTableViewCell.xib in Resources */,
 				59380E4325C2B77200011FD1 /* Main.storyboard in Resources */,
+				5985DE8325C64586002EBDF4 /* ReusableCustomView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +262,7 @@
 				598F5F1C25C4FAA00093C225 /* articleViewController.swift in Sources */,
 				59D5F49325C5608A005348C9 /* UIViewControllerExtension.swift in Sources */,
 				59380E6125C2C61800011FD1 /* CustomTableViewCell.swift in Sources */,
+				5985DE8025C64559002EBDF4 /* ReusableCustomView.swift in Sources */,
 				59D5F49025C55C78005348C9 /* categoryTqoViewController.swift in Sources */,
 				59380E3C25C2B77200011FD1 /* AppDelegate.swift in Sources */,
 				598F5F1825C4EE350093C225 /* SideMenuViewController.swift in Sources */,

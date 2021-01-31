@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SideMenu
 
-//custom sideStyle
+//customize sidemenu style
 class CustomSideMenuNavigation: SideMenuNavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,5 +18,4 @@ class CustomSideMenuNavigation: SideMenuNavigationController {
         self.menuWidth = 250
         self.presentationStyle = SideMenuPresentationStyle.menuSlideIn
     }
-    
 }

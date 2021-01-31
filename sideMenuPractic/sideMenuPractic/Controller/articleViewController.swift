@@ -1,22 +1,13 @@
-//
-//  articleViewController.swift
-//  sideMenuPractic
-//
-//  Created by heawon on 2021/01/30.
-//
-
 import UIKit
 import SideMenu
 
 class articleViewController: UIViewController {
-
-    @IBAction func btnClicked(_ sender: UIButton) {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let sideMenuViewController: SideMenuViewController = storyboard.instantiateViewController(withIdentifier: "SideMenuViewController") as! SideMenuViewController
-        let menu = CustomSideMenuNavigation(rootViewController: sideMenuViewController)
-        present(menu, animated: true, completion: nil)
+    //MARK: - customCell
+    @IBOutlet weak var customViewCell: ResuableCustomView!
+    @IBAction func customViewTapped(_ sender: ResuableCustomView) {
+        self.showSlideMenu()
     }
+    
     @IBOutlet weak var tableView: UITableView!
     var ArticleArray = [
     Article(title: "Lake Canada", articleImageName: "21.jpeg", authorName: "Jonh", authorImageName: "11.jpqg"),
@@ -32,10 +23,7 @@ class articleViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "eachContentCell")
     }
-    
-
 }
-
 
 extension articleViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

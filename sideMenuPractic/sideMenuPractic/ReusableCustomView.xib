@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ResuableCustomView" customModule="sideMenuPractic" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="MYK-Cg-N5c" id="xTl-nn-y1P"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="638" height="70"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MYK-Cg-N5c" userLabel="ContainerView">
+                    <rect key="frame" x="0.0" y="0.0" width="638" height="70"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wyw-Rh-9E7">
+                            <rect key="frame" x="0.0" y="10" width="50" height="50"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMV-z7-68e">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <connections>
+                                        <action selector="menuBtnClicked:" destination="-1" eventType="touchUpInside" id="aV3-oS-zhK"/>
+                                    </connections>
+                                </button>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white_menu" translatesAutoresizingMaskIntoConstraints="NO" id="qEQ-FZ-MSR">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                </imageView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="qEQ-FZ-MSR" firstAttribute="top" secondItem="Wyw-Rh-9E7" secondAttribute="top" id="29f-kb-L6d"/>
+                                <constraint firstAttribute="width" constant="50" id="6bC-z4-dzK"/>
+                                <constraint firstAttribute="bottom" secondItem="OMV-z7-68e" secondAttribute="bottom" id="6bu-hF-MgM"/>
+                                <constraint firstAttribute="height" constant="50" id="Fih-RN-3hh"/>
+                                <constraint firstItem="qEQ-FZ-MSR" firstAttribute="leading" secondItem="Wyw-Rh-9E7" secondAttribute="leading" id="PeU-5m-JeY"/>
+                                <constraint firstAttribute="bottom" secondItem="qEQ-FZ-MSR" secondAttribute="bottom" id="g0f-5F-2jQ"/>
+                                <constraint firstItem="OMV-z7-68e" firstAttribute="top" secondItem="Wyw-Rh-9E7" secondAttribute="top" id="gC5-RR-spZ"/>
+                                <constraint firstAttribute="trailing" secondItem="qEQ-FZ-MSR" secondAttribute="trailing" id="hle-Yt-97V"/>
+                                <constraint firstAttribute="trailing" secondItem="OMV-z7-68e" secondAttribute="trailing" id="qRN-C7-uTy"/>
+                                <constraint firstItem="OMV-z7-68e" firstAttribute="leading" secondItem="Wyw-Rh-9E7" secondAttribute="leading" id="zVK-oe-TOM"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Everyday Moments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gwu-gT-7w0">
+                            <rect key="frame" x="50" y="22.5" width="588" height="25"/>
+                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="19"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.53829330210000004" green="0.48205518720000001" blue="0.87455117699999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="2nO-eu-nyU"/>
+                        <constraint firstItem="Wyw-Rh-9E7" firstAttribute="leading" secondItem="MYK-Cg-N5c" secondAttribute="leading" constant="10" id="fcO-Hf-30d"/>
+                        <constraint firstItem="Gwu-gT-7w0" firstAttribute="centerX" secondItem="MYK-Cg-N5c" secondAttribute="centerX" id="h11-8W-9p4"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="MYK-Cg-N5c" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BJu-ke-NnP"/>
+                <constraint firstAttribute="trailing" secondItem="MYK-Cg-N5c" secondAttribute="trailing" id="OYP-un-unL"/>
+                <constraint firstItem="MYK-Cg-N5c" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dVN-Sj-NC3"/>
+                <constraint firstAttribute="bottom" secondItem="MYK-Cg-N5c" secondAttribute="bottom" id="eod-nH-ZCL"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="702.89855072463774" y="-186.16071428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="white_menu" width="80" height="80"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
