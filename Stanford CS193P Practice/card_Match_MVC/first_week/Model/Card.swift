@@ -23,6 +23,5 @@ struct Card {
         //각 인스턴스의 ID는 IDSet임
         self.ID = Card.makeID()
     }
-    
 }
 

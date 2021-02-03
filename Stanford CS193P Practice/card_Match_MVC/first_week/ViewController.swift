@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     @IBAction func cardClicked(_ sender: UIButton) {
         startCount += 1
         if let cardNumber = cardBtns.firstIndex(of: sender){
-                game.chooseCard(at: cardNumber) //facedUp, isMatched Logix
+                game.chooseCard(at: cardNumber) //facedUp, isMatched Logiㅊ
                 updateViewFromModel() //.isFacedUp여부에 따라 UI 변경
         } else {
             print("chosen card was not in card btn")
