@@ -1,24 +1,19 @@
 import UIKit
 class ViewController: UIViewController {
-    // game을 처음 쓸 떄 이니셜라이징 하는 데, CardBrain에 들어가는 값에 프로퍼티 및 변수가 들어가면 해당 변수도 이니셜라이징 되어야 함(첫 사용시)
-    // 즉 game을 초기화하는 중에 cardBtns도 초기화하는 것 -> Property인 game은 cardBtns가 초기화하는 와중에 초기화될 수 없다.(순서 불확실, 부작용 방지 위해)
-    // 에러 발생 코드: var game = CardBrain(numberOfPairsOfCards: cardBtns.count / 2)
-
-    // 따라서 lazy를 사용 -> lazy로 선언한 속성은 처음 사용할 때 초기화되므로 다른 프로퍼티를 사용할 수 있다.
-    lazy var game = CardBrain(numberOfPairsOfCards: cardBtns.count / 2)
+    private lazy var game = CardBrain(numberOfPairsOfCards: cardBtns.count / 2)
     
-    var startCount = 0 {
+    private(set) var startCount = 0 {
         didSet {
             flipCount.text = "Flip Counts: \(startCount)"
         }
     }
-    @IBOutlet weak var flipCount: UILabel!
-    @IBOutlet var cardBtns: [UIButton]!
+    @IBOutlet private weak var flipCount: UILabel!
+    @IBOutlet private var cardBtns: [UIButton]!
 
     override func viewDidLoad() {
         flipCount.text = "Flip Counts: 0"
     }
-    @IBAction func cardClicked(_ sender: UIButton) {
+    @IBAction private func cardClicked(_ sender: UIButton) {
         startCount += 1
         if let cardNumber = cardBtns.firstIndex(of: sender){
                 game.chooseCard(at: cardNumber) //facedUp, isMatched Logiㅊ
@@ -29,7 +24,7 @@ class ViewController: UIViewController {
     }
 
     //match card and button
-    func updateViewFromModel(){
+    private func updateViewFromModel(){
         for index in 0..<cardBtns.count {
             let button = cardBtns[index]
             let card = game.cards[index]
@@ -44,21 +39,18 @@ class ViewController: UIViewController {
             }
         }
     }
-    var emojiChoices = ["🎃", "💩","🧠", "🌱", "🌏", "📀"]
-    var emoji = [Int:String]() //initialize
-    func emoji(for card: Card) -> String {
-        // 해당 카드에 이모지를 넣기
-        // 현재 해당 카드 id로 배정된 스트링이 없다면 랜덤으로 넣어주기
-        if emoji[card.ID] == nil {
+    private var emojiChoices = ["🎃", "💩","🧠", "🌱", "🌏", "📀"]
+    private var emoji = [Card: String]() //key valie: custom Type인 Card로 변경
+    private func emoji(for card: Card) -> String {
+        if emoji[card] == nil {
             let randomNumber = Int.random(in: 0..<emojiChoices.count)
-            emoji[card.ID] = emojiChoices.remove(at: randomNumber)
-            //이모지를 배정한 뒤에 이모지 선택리스트에서 제외하기
+            emoji[card] = emojiChoices.remove(at: randomNumber)
         }
-        return emoji[card.ID] ?? "?"
+        return emoji[card] ?? "?"
     }
     @IBAction func restartBtnClicked(_ sender: UIButton) {
         game.restart()
-        emoji = [Int:String]()
+        emoji = [Card:String]()
         startCount = 0
         emojiChoices = ["🎃", "💩","🧠", "🌱", "🌏","📀"]
         self.updateViewFromModel()
