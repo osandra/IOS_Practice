@@ -13,18 +13,20 @@ final class APICaller {
     
     let baseURL = "https://api.unsplash.com/search/photos/"
     
-    let param:[String:String] = [
-        "query": "cat",
-        "client_id": SecretKey.client_id
-     ]
-    
+
     enum APIError: Error {
         case failedToGetJsonData
         case failedToGetData
     }
-    
-    public func getPhotoData(completion: @escaping (Result<PhotoAPI, Error>)->Void){
-       let dataRequest = AF.request(baseURL,
+
+    public func getPhotoData(term: String, completion: @escaping (Result<PhotoAPI, Error>)->Void){
+
+        let param:[String:String] = [
+            "query": term,
+            "client_id": SecretKey.client_id
+         ]
+        
+        let dataRequest = AF.request(baseURL,
                  method: .get,
                  parameters: param,
                  encoding: URLEncoding.default

@@ -15,12 +15,18 @@ class ViewController: UIViewController {
         collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
         return collectionView
     }()
+
+    private var searchBar: UISearchBar = {
+       let searchBar = UISearchBar()
+        searchBar.autocorrectionType = .no
+        searchBar.autocapitalizationType = .none
+        return searchBar
+    }()
     
     lazy var activityIndicator: UIActivityIndicatorView = {
        let activityIndicator = UIActivityIndicatorView()
         activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         activityIndicator.center = self.view.center
-        activityIndicator.startAnimating()
         return activityIndicator
     }()
     
@@ -34,22 +40,28 @@ class ViewController: UIViewController {
     //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData()
-        view.addSubview(collectionView)
-        view.addSubview(activityIndicator)
+        addSubviews()
+        searchBar.delegate = self
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .systemBackground
     }
+    private func addSubviews(){
+        view.addSubview(searchBar)
+        view.addSubview(collectionView)
+        view.addSubview(activityIndicator)
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        collectionView.frame = view.bounds
+        searchBar.frame = CGRect(x: 50, y: view.safeAreaInsets.top+10, width: view.width-100, height: 50)
+        collectionView.frame = CGRect(x: 0, y: view.safeAreaInsets.top+100, width: view.width, height: (view.height-view.safeAreaInsets.top)-100)
     }
- 
+    
     //MARK: - Function
-    func fetchData(){
-        APICaller.shared.getPhotoData { [weak self] result in
+    func fetchData(with searchWord: String){
+        self.imageLink = []
+        APICaller.shared.getPhotoData(term: searchWord) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
@@ -77,9 +89,10 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as! CustomCollectionViewCell
-        let url = URL(string: imageLink[indexPath.row])
-        let data = try? Data(contentsOf: url!)
-        cell.imageView.image=UIImage(data: data!)
+        let urlString = imageLink[indexPath.row]
+        if let url = URL(string: urlString), let data = try? Data(contentsOf: url) {
+            cell.imageView.image=UIImage(data: data)
+        }
         return cell
     }
     
@@ -100,3 +113,24 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
 }
 
+
+//MARK: - Search Bar
+extension ViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.endEditing(true)
+        guard let searchText = searchBar.text, searchText.count > 0 else {return}
+        DispatchQueue.main.async { [weak self] in
+            self?.fetchData(with: searchText)
+            self?.activityIndicator.startAnimating()
+        }
+    }
+
+    //사용자가 x버튼 누르면
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+              DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                  searchBar.resignFirstResponder()
+              }
+          }
+    }
+}
