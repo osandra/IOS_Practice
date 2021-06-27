@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 
-class ViewController: UIViewController {
+class PhotoSeachViewController: UIViewController {
     //MARK: - Property
     private let collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -40,6 +40,7 @@ class ViewController: UIViewController {
     //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Search Photos"
         addSubviews()
         searchBar.delegate = self
         collectionView.delegate = self
@@ -58,7 +59,7 @@ class ViewController: UIViewController {
         collectionView.frame = CGRect(x: 0, y: view.safeAreaInsets.top+100, width: view.width, height: (view.height-view.safeAreaInsets.top)-100)
     }
     
-    //MARK: - Function
+    //MARK: - Method
     func fetchData(with searchWord: String){
         self.imageLink = []
         APICaller.shared.getPhotoData(term: searchWord) { [weak self] result in
@@ -81,7 +82,7 @@ class ViewController: UIViewController {
 }
 
 //MARK: - CollectionView
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension PhotoSeachViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageLink.count
@@ -115,7 +116,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
 
 
 //MARK: - Search Bar
-extension ViewController: UISearchBarDelegate {
+extension PhotoSeachViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.endEditing(true)
         guard let searchText = searchBar.text, searchText.count > 0 else {return}
